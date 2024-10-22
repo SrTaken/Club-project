@@ -14,8 +14,8 @@ import java.util.logging.Logger;
  * @author beni
  */
 public class Usuari {
-    String nom;
-    String password;
+    private String nom;
+    private String password;
 
     public Usuari(String nom, String password) throws DataException {
         setNom(nom);
@@ -27,9 +27,8 @@ public class Usuari {
     }
 
     public void setNom(String nom) throws DataException {
-        if(nom == null || nom.length() <3){
-            throw new DataException("El nombre no puede ser null o tener una longitud inferior a 3");
-        }
+        if(nom == null || nom.length() <3)
+            throw new DataException("El nom no pot ser null o tindre una longitud inferior a 3");
         this.nom = nom;
     }
 
@@ -38,9 +37,9 @@ public class Usuari {
     }
 
     public void setPassword(String password) throws DataException {
-        if(password == null || password.length() <8){
-            throw new DataException("El contraseña no puede ser null o tener una longitud inferior a 8");
-        }
+        if(password == null || password.length() <8)
+            throw new DataException("La contrasenya no pot ser null o tindre una longitud inferior a 8");
+        
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-1");
