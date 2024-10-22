@@ -62,5 +62,4 @@ public class Equip {
         this.temporada = temporada;
     }
     
-    
 }
