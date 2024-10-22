@@ -16,12 +16,15 @@ import java.util.logging.Logger;
 public class Usuari {
     private String nom;
     private String password;
+    private String login; 
 
-    public Usuari(String nom, String password) throws DataException {
+    public Usuari(String nom, String password, String login) throws DataException {
         setNom(nom);
+        setLogin(login);
         setPassword(password);
     }
 
+    
     public String getNom() {
         return nom;
     }
@@ -52,6 +55,17 @@ public class Usuari {
             sb.append(String.format("%02x", b));
         }
         this.password = sb.toString();
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) throws DataException {
+        if(login == null || login.length() <3 )
+            throw new DataException("Login no valid");
+        
+        this.login = login;
     }
     
     
