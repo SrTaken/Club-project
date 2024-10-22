@@ -27,12 +27,12 @@ public class Jugador {
     public Jugador(String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String foto, int any_fi_revisio_medica) throws DataException {
         setNom(nom);
         setCognom(cognom);
-        this.sexe = sexe;
+        setSexe(sexe);
         setData_naix(data_naix);
         setIdLegal(idLegal);
         setIban(iban);
         setAdresa(adresa);
-        this.foto = foto;
+        setFoto(foto);
         setAny_fi_revisio_medica(any_fi_revisio_medica);
         
         actual = new Date();
@@ -63,7 +63,9 @@ public class Jugador {
         return sexe;
     }
 
-    public void setSexe(Sexe sexe) {
+    public void setSexe(Sexe sexe) throws DataException {
+        if(sexe == null)
+            throw new DataException("El sexe no pot ser null");
         this.sexe = sexe;
     }
 
@@ -138,7 +140,9 @@ public class Jugador {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(String foto) throws DataException {
+        if(foto == null || foto.length() < 2)
+            throw new DataException("La foto no es valida");
         this.foto = foto;
     }
 
