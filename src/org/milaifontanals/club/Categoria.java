@@ -65,6 +65,11 @@ public class Categoria {
     public void setEdat_maxima(int edat_maxima) {
         this.edat_maxima = edat_maxima;
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "id=" + id + ", categoria=" + categoria + ", edat_minima=" + edat_minima + ", edat_maxima=" + edat_maxima + '}';
+    }
     
     
 }

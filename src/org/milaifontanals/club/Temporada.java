@@ -25,6 +25,11 @@ public class Temporada {
         }
         this.year = year;
     }
+
+    @Override
+    public String toString() {
+        return "Temporada{" + "year=" + year + '}';
+    }
     
     
     

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Jugador {
     private static Date actual = actual = new Date();
-    private int id;
+    private int id = 0;
     private String nom;
     private String cognom; 
     private Sexe sexe; 
@@ -181,5 +181,12 @@ public class Jugador {
         
         this.any_fi_revisio_medica = any_fi_revisio_medica;
     }   
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "id=" + id + ", nom=" + nom + ", cognom=" + cognom + ", sexe=" + sexe + ", data_naix=" + data_naix + ", idLegal=" + idLegal + ", iban=" + iban + ", adresa=" + adresa + ", foto=" + foto + ", any_fi_revisio_medica=" + any_fi_revisio_medica + '}';
+    }
+    
+    
     
 }
