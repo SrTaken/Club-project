@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Jugador {
     private static Date actual = null;
+    private int id;
     private String nom;
     private String cognom; 
     private Sexe sexe; 
@@ -37,6 +38,30 @@ public class Jugador {
         
         actual = new Date();
     }
+    public Jugador(int id, String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String foto, int any_fi_revisio_medica) throws DataException {
+        this.id = id;
+        setNom(nom);
+        setCognom(cognom);
+        setSexe(sexe);
+        setData_naix(data_naix);
+        setIdLegal(idLegal);
+        setIban(iban);
+        setAdresa(adresa);
+        setFoto(foto);
+        setAny_fi_revisio_medica(any_fi_revisio_medica);
+        
+        actual = new Date();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 
     public String getNom() {
         return nom;

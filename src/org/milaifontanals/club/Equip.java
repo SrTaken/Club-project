@@ -9,6 +9,7 @@ package org.milaifontanals.club;
  * @author beni
  */
 public class Equip {
+    private int id;
     private String nom; 
     private Tipus tipus;
     private Categoria categoria; 
@@ -20,7 +21,23 @@ public class Equip {
         setTemporada(temporada);
         setCategoria(categoria);
     }
+    
+    public Equip(int id, String nom, Tipus tipus, Categoria categoria, Temporada temporada) throws DataException {
+        this.id = id;
+        setNom(nom);
+        setTipus(tipus);
+        setTemporada(temporada);
+        setCategoria(categoria);
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNom() {
         return nom;
     }
