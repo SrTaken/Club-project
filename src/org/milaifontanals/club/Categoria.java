@@ -9,6 +9,7 @@ package org.milaifontanals.club;
  * @author beni
  */
 public class Categoria {
+    private int id;
     private String categoria;
     private int edat_minima; 
     private int edat_maxima; 
@@ -20,7 +21,24 @@ public class Categoria {
         this.edat_minima = edat_minima;
         this.edat_maxima = edat_maxima;
     }
+    
+    public Categoria(int id, String categoria, int edat_minima, int edat_maxima) throws DataException {
+        this.id = id;
+        setCategoria(categoria);
+        this.edat_minima = edat_minima;
+        this.edat_maxima = edat_maxima;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    
     public String getCategoria() {
         return categoria;
     }
