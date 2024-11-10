@@ -12,12 +12,12 @@ import java.util.Date;
  * @author beni
  */
 public class Jugador {
-    private static Date actual = null;
+    private static Date actual = actual = new Date();
     private int id;
     private String nom;
     private String cognom; 
     private Sexe sexe; 
-    private Date data_naix;
+    private Date data_naix = new Date();
     private String idLegal; 
     private String iban;
     private String adresa;
@@ -35,8 +35,6 @@ public class Jugador {
         setAdresa(adresa);
         setFoto(foto);
         setAny_fi_revisio_medica(any_fi_revisio_medica);
-        
-        actual = new Date();
     }
     public Jugador(int id, String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String foto, int any_fi_revisio_medica) throws DataException {
         this.id = id;
@@ -49,8 +47,6 @@ public class Jugador {
         setAdresa(adresa);
         setFoto(foto);
         setAny_fi_revisio_medica(any_fi_revisio_medica);
-        
-        actual = new Date();
     }
 
     public int getId() {
@@ -87,6 +83,10 @@ public class Jugador {
     public Sexe getSexe() {
         return sexe;
     }
+    
+    public String getSexeString() {
+        return sexe.name();
+    }
 
     public void setSexe(Sexe sexe) throws DataException {
         if(sexe == null)
@@ -99,7 +99,7 @@ public class Jugador {
     }
 
     public void setData_naix(Date data_naix) throws DataException {
-        if(data_naix.compareTo(actual) == 0)
+        if(data_naix.compareTo(actual) == 0 || data_naix == null)
             throw new DataException("El any de naixament no es valid");
         
         this.data_naix = data_naix;
@@ -121,7 +121,7 @@ public class Jugador {
     }
 
     public void setIban(String iban) throws DataException {
-        if(IbanValidator(iban))
+        if(!IbanValidator(iban))
             throw new DataException("IBAN no valid");
         
         this.iban = iban;
