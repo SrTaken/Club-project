@@ -9,32 +9,32 @@ package org.milaifontanals.club;
  * @author beni
  */
 public class Membre {
-    Jugador j;
-    Equip e;
-    char titular_convidat;
+    private int j;
+    private int e;
+    private char titular_convidat;
 
-    public Membre(Jugador j, Equip e, char titular_convidat) throws DataException {
+    public Membre(int j, int e, char titular_convidat) throws DataException {
         setJ(j);
         setE(e);
         setTitular_convidat(titular_convidat);
     }
 
-    public Jugador getJ() {
+    public int getJ() {
         return j;
     }
 
-    public void setJ(Jugador j) throws DataException {
-        if(j == null)
+    public void setJ(int j) throws DataException {
+        if(j < 1)
             throw new DataException("El jugador no pot ser null");
         this.j = j;
     }
 
-    public Equip getE() {
+    public int getE() {
         return e;
     }
 
-    public void setE(Equip e) throws DataException {
-        if(e == null)
+    public void setE(int e) throws DataException {
+        if(e < 1)
             throw new DataException("El equip no pot ser null");
         this.e = e;
     }

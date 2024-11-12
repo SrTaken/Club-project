@@ -1,0 +1,143 @@
+@startuml
+left to right direction
+
+package "org.milaifontanals.club" {
+    
+    class Categoria {
+        - id : int
+        - categoria : String
+        - edat_minima : int
+        - edat_maxima : int
+        + Categoria(categoria : String, edat_minima : int, edat_maxima : int)
+        + Categoria(id : int, categoria : String, edat_minima : int, edat_maxima : int)
+        + getId() : int
+        + setId(id : int)
+        + getCategoria() : String
+        + setCategoria(categoria : String)
+        + getEdat_minima() : int
+        + setEdat_minima(edat_minima : int)
+        + getEdat_maxima() : int
+        + setEdat_maxima(edat_maxima : int)
+        + toString() : String
+    }
+    
+    class DataException extends Exception {
+        + DataException(message : String)
+        + DataException(message : String, cause : Throwable)
+    }
+
+    class Equip {
+        - id : int
+        - nom : String
+        - tipus : Tipus
+        - categoria : Categoria
+        - temporada : Temporada
+        + Equip(nom : String, tipus : Tipus, categoria : Categoria, temporada : Temporada)
+        + Equip(id : int, nom : String, tipus : Tipus, categoria : Categoria, temporada : Temporada)
+        + getId() : int
+        + setId(id : int)
+        + getNom() : String
+        + setNom(nom : String)
+        + getTipus() : Tipus
+        + setTipus(tipus : Tipus)
+        + getCategoria() : Categoria
+        + setCategoria(categoria : Categoria)
+        + getTemporada() : Temporada
+        + setTemporada(temporada : Temporada)
+    }
+
+    class Jugador {
+        - id : int
+        - nom : String
+        - cognom : String
+        - sexe : Sexe
+        - data_naix : Date
+        - idLegal : String
+        - iban : String
+        - adresa : String
+        - foto : String
+        - any_fi_revisio_medica : int
+        + Jugador(nom : String, cognom : String, sexe : Sexe, data_naix : Date, idLegal : String, iban : String, adresa : String, foto : String, any_fi_revisio_medica : int)
+        + Jugador(id : int, nom : String, cognom : String, sexe : Sexe, data_naix : Date, idLegal : String, iban : String, adresa : String, foto : String, any_fi_revisio_medica : int)
+        + getId() : int
+        + setId(id : int)
+        + getNom() : String
+        + setNom(nom : String)
+        + getCognom() : String
+        + setCognom(cognom : String)
+        + getSexe() : Sexe
+        + setSexe(sexe : Sexe)
+        + getData_naix() : Date
+        + setData_naix(data_naix : Date)
+        + getIdLegal() : String
+        + setIdLegal(idLegal : String)
+        + getIban() : String
+        + setIban(iban : String)
+        + getAdresa() : String
+        + setAdresa(adresa : String)
+        + getFoto() : String
+        + setFoto(foto : String)
+        + getAny_fi_revisio_medica() : int
+        + setAny_fi_revisio_medica(any_fi_revisio_medica : int)
+        + toString() : String
+    }
+
+    class Membre {
+        - j : Jugador
+        - e : Equip
+        - titular_convidat : char
+        + Membre(j : Jugador, e : Equip, titular_convidat : char)
+        + getJ() : Jugador
+        + setJ(j : Jugador)
+        + getE() : Equip
+        + setE(e : Equip)
+        + getTitular_convidat() : char
+        + setTitular_convidat(titular_convidat : char)
+    }
+
+    enum Sexe {
+        H
+        D
+    }
+
+    class Temporada {
+        - year : int
+        + Temporada(year : int)
+        + getYear() : int
+        + setYear(year : int)
+        + toString() : String
+    }
+
+    enum Tipus {
+        H
+        D
+        M
+    }
+
+    class Usuari {
+        - nom : String
+        - password : String
+        - login : String
+        + Usuari(nom : String, password : String, login : String)
+        + getNom() : String
+        + setNom(nom : String)
+        + getPassword() : String
+        + setPassword(password : String)
+        + getLogin() : String
+        + setLogin(login : String)
+    }
+}
+
+' Relaciones
+Categoria --|> DataException : <<throws>>
+Jugador --|> DataException : <<throws>>
+Equip --|> Categoria
+Equip --> Temporada
+Membre *-- Jugador
+Membre *-- Equip
+Usuari --|> DataException : <<throws>>
+Jugador ..> Sexe : <<use>>
+Equip ..> Tipus : <<use>>
+DataException --|> Exception
+
+@enduml
