@@ -51,13 +51,7 @@ public class Jugador {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
+    }    
 
     public String getNom() {
         return nom;
@@ -127,7 +121,7 @@ public class Jugador {
         this.iban = iban;
     }
     
-    private static boolean IbanValidator(String iban) {
+    public static boolean IbanValidator(String iban) {
         
         String ibanFormateado = iban.replaceAll("\\s+", "").toUpperCase();
         if (ibanFormateado.length() < 15 || ibanFormateado.length() > 34) {
