@@ -9,32 +9,32 @@ package org.milaifontanals.club;
  * @author beni
  */
 public class Membre {
-    private int j;
-    private int e;
+    private Jugador j;
+    private Equip e;
     private char titular_convidat;
 
-    public Membre(int j, int e, char titular_convidat) throws DataException {
+    public Membre(Jugador j, Equip e, char titular_convidat) throws DataException {
         setJ(j);
         setE(e);
         setTitular_convidat(titular_convidat);
     }
 
-    public int getJ() {
+    public Jugador getJ() {
         return j;
     }
 
-    public void setJ(int j) throws DataException {
-        if(j < 1)
+    public void setJ(Jugador j) throws DataException {
+        if(j == null)
             throw new DataException("El jugador no pot ser null");
         this.j = j;
     }
 
-    public int getE() {
+    public Equip getE() {
         return e;
     }
 
-    public void setE(int e) throws DataException {
-        if(e < 1)
+    public void setE(Equip e) throws DataException {
+        if(e == null)
             throw new DataException("El equip no pot ser null");
         this.e = e;
     }
@@ -44,8 +44,8 @@ public class Membre {
     }
 
     public void setTitular_convidat(char titular_convidat) throws DataException {
-        if(titular_convidat == 'C' || titular_convidat == 'T' )
-            throw new DataException("Nomes pot ser C(conviat) o T(Titullar)");
+        if(titular_convidat != 'C' && titular_convidat != 'T' )
+            throw new DataException("Nomes pot ser C(conviat) o T(Titular)");
         this.titular_convidat = titular_convidat;
     }
     

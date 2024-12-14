@@ -43,18 +43,26 @@ public class Usuari {
         if(password == null || password.length() <8)
             throw new DataException("La contrasenya no pot ser null o tindre una longitud inferior a 8");
         
+        if(password.contains("sha1-")){
+            this.password = password;
+            return;
+        }
+        
+        String sb = cifratePassword(password);
+        this.password = sb;
+    }
+
+    public static String cifratePassword(String password1) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException ex) {}
-        
-        byte[] hashBytes = md.digest(password.getBytes());
-        
+        byte[] hashBytes = md.digest(password1.getBytes());
         StringBuilder sb = new StringBuilder();
         for (byte b : hashBytes) {
             sb.append(String.format("%02x", b));
         }
-        this.password = sb.toString();
+        return "sha1-"+sb.toString();
     }
 
     public String getLogin() {

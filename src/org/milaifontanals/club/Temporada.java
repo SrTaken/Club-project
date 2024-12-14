@@ -28,7 +28,7 @@ public class Temporada {
 
     @Override
     public String toString() {
-        return "Temporada{" + "year=" + year + '}';
+        return year+"";
     }
     
     

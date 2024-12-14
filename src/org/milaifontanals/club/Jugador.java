@@ -21,11 +21,13 @@ public class Jugador {
     private String idLegal; 
     private String iban;
     private String adresa;
+    private String poblacio;
+    private int cp;
     private String foto; 
     private int any_fi_revisio_medica;
 
     //TODO ES OBLIGATORIO
-    public Jugador(String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String foto, int any_fi_revisio_medica) throws DataException {
+    public Jugador(String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String poblacio, int cp, String foto, int any_fi_revisio_medica) throws DataException {
         setNom(nom);
         setCognom(cognom);
         setSexe(sexe);
@@ -33,10 +35,12 @@ public class Jugador {
         setIdLegal(idLegal);
         setIban(iban);
         setAdresa(adresa);
+        setPoblacio(poblacio);
+        setCp(cp);
         setFoto(foto);
         setAny_fi_revisio_medica(any_fi_revisio_medica);
     }
-    public Jugador(int id, String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String foto, int any_fi_revisio_medica) throws DataException {
+    public Jugador(int id, String nom, String cognom, Sexe sexe, Date data_naix, String idLegal, String iban, String adresa, String poblacio, int cp, String foto, int any_fi_revisio_medica) throws DataException {
         this.id = id;
         setNom(nom);
         setCognom(cognom);
@@ -45,10 +49,34 @@ public class Jugador {
         setIdLegal(idLegal);
         setIban(iban);
         setAdresa(adresa);
+        setPoblacio(poblacio);
+        setCp(cp);
         setFoto(foto);
         setAny_fi_revisio_medica(any_fi_revisio_medica);
     }
 
+    public String getPoblacio() {
+        return poblacio;
+    }
+
+    public void setPoblacio(String poblacio) throws DataException {
+        if(poblacio == null || poblacio.length() < 1)
+            throw new DataException("Poblacio no valid");
+        this.poblacio = poblacio;
+    }
+
+    public int getCp() {
+        return cp;
+    }
+
+    public void setCp(int cp) throws DataException {
+        if(cp < 1)
+            throw new DataException("CP no valid");
+        this.cp = cp;
+    }
+
+    
+    
     public int getId() {
         return id;
     }    

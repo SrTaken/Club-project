@@ -43,7 +43,7 @@ public class Equip {
     }
 
     public void setNom(String nom) throws DataException {
-        if(nom == null || nom.length() <3 )
+        if(nom == null || nom.length() ==0 )
             throw new DataException("Nom no valid");
         this.nom = nom;
     }
@@ -78,5 +78,11 @@ public class Equip {
             throw new DataException("Temporada no pot ser null");
         this.temporada = temporada;
     }
+
+    @Override
+    public String toString() {
+        return "Equip{" + "id=" + id + ", nom=" + nom + ", tipus=" + tipus + ", categoria=" + categoria + ", temporada=" + temporada + '}';
+    }
+    
     
 }
