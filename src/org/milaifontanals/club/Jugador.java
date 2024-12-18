@@ -132,7 +132,7 @@ public class Jugador {
     }
 
     public void setIdLegal(String idLegal) throws DataException {
-        if(idLegal == null || idLegal.length() < 8)
+        if(idLegal == null || idLegal.length() < 8 || !NifValidator(idLegal))
             throw new DataException("El idlegal no es valid");
         
         this.idLegal = idLegal;
@@ -209,6 +209,46 @@ public class Jugador {
         return "Jugador{" + "id=" + id + ", nom=" + nom + ", cognom=" + cognom + ", sexe=" + sexe + ", data_naix=" + data_naix + ", idLegal=" + idLegal + ", iban=" + iban + ", adresa=" + adresa + ", foto=" + foto + ", any_fi_revisio_medica=" + any_fi_revisio_medica + '}';
     }
     
-    
-    
+    public static boolean NifValidator(String nif) {
+        if (nif == null || nif.trim().isEmpty()) {
+            return false;
+        }
+
+        nif = nif.toUpperCase().trim();
+
+        if (nif.length() != 9) {
+            return false;
+        }
+
+        char first = nif.charAt(0);
+        String numbers;
+        char letter = nif.charAt(8);
+        String letrasNIF = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        try {
+            if (first == 'X' || first == 'Y' || first == 'Z') {
+                numbers = (first == 'X' ? "0" : first == 'Y' ? "1" : "2") + nif.substring(1, 8);
+            } 
+            else {
+                if (!Character.isDigit(first)) {
+                    return false;
+                }
+                numbers = nif.substring(0, 8);
+            }
+
+            for (int i = 0; i < numbers.length(); i++) {
+                if (!Character.isDigit(numbers.charAt(i))) {
+                    return false;
+                }
+            }
+
+            int num = Integer.parseInt(numbers);
+            char letraCorrecta = letrasNIF.charAt(num % 23);
+
+            return letter == letraCorrecta;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

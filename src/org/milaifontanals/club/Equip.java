@@ -81,7 +81,7 @@ public class Equip {
 
     @Override
     public String toString() {
-        return "Equip{" + "id=" + id + ", nom=" + nom + ", tipus=" + tipus + ", categoria=" + categoria + ", temporada=" + temporada + '}';
+        return nom + " " +  temporada;
     }
     
     
